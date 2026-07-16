@@ -1,6 +1,6 @@
 {
-    "name": "Ascolto la Musica",
-    "short_name": "Ascolto Musica",
+    "name": "Ascolto la Musica e MP3",
+    "short_name": "Musica e MP3",
     "start_url": "./index.html",
     "scope": "./",
     "display": "standalone",

@@ -13,7 +13,7 @@ const STORAGE_KEYS = {
   prefs: 'alm_prefs',
 };
 
-const AUDIO_DB_NAME = 'ascolto_la_musica';
+const AUDIO_DB_NAME = 'ascolto_la_musica_e_mp3';
 const AUDIO_DB_VERSION = 1;
 const AUDIO_STORE = 'audio';
 

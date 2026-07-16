@@ -7,7 +7,7 @@
 //   SWITCH 2 = FRECCIA DESTRA → audio MP3/voci registrate (vedi js/switch2.js)
 
 const APP_CONFIG = {
-  name: 'Ascolto la Musica',
+  name: 'Ascolto la Musica e MP3',
   version: '1.0.0',
 };
 

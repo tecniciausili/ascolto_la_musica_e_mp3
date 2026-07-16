@@ -1,7 +1,7 @@
-// Service Worker - Ascolto la Musica (versione autonoma)
+// Service Worker - Ascolto la Musica e MP3 (versione autonoma)
 // Strategia: cache-first per gli asset statici della stessa origine.
 // I dati dell'app NON passano di qui (localStorage + IndexedDB).
-const CACHE_NAME = 'ascolto_la_musica_standalone_v1.0';
+const CACHE_NAME = 'ascolto_la_musica_e_mp3_v1.0';
 const URLS_TO_CACHE = [
   './',
   './index.html',

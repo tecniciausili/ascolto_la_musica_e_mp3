@@ -1,4 +1,4 @@
-# Ascolto la Musica — versione autonoma
+# Ascolto la Musica e MP3 — versione autonoma
 
 Strumento di training cognitivo con **doppio switch** (Makey Makey), pensato per utenti con disabilità motorie. Applicazione **100% statica** (HTML/CSS/JavaScript): nessun server, nessun database esterno, nessun login.
 
@@ -42,7 +42,7 @@ All'avvio l'app richiede `navigator.storage.persist()` per proteggere i dati dal
 Serve solo un server statico (per permessi microfono e service worker usare `localhost`):
 
 ```bash
-cd ascolto_la_musica
+cd ascolto_la_musica_e_mp3
 python3 -m http.server 8080
 # oppure: npx serve .
 ```
