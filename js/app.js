@@ -1051,6 +1051,11 @@ function initYouTubePlayer(videoId) {
         modestbranding: 1,
         rel: 0,
         disablekb: 1,
+        // origin/enablejsapi: da ott. 2025 YouTube esige un origin valido,
+        // altrimenti rifiuta l'embed con errore 153. Con file:// l'origin è
+        // "null" e non c'è rimedio lato codice: servire l'app via http(s).
+        enablejsapi: 1,
+        origin: window.location.origin,
       },
       events: {
         onReady: onPlayerReady,
