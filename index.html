@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#673AB7">
+    <meta name="description" content="Ascolto la Musica - Strumento di training cognitivo con doppio switch">
+
+    <title>Ascolto la Musica</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/icon-512.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css?v=1.0">
+    <link rel="stylesheet" href="assets/fonts/bootstrap-icons/bootstrap-icons.css?v=1.0">
+</head>
+<body>
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-content">
+            <div class="header-actions-left">
+                <button class="btn-user-options" id="btnUserOptionsHeader" onclick="toggleUserOptions()" title="Opzioni ascolto">
+                    <i class="bi bi-sliders"></i>
+                </button>
+            </div>
+            <h1 class="app-title">Ascolto la Musica</h1>
+            <button class="btn-menu" onclick="toggleMenu()">
+                <i class="bi bi-three-dots-vertical"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="app-main" id="appMain">
+        <div class="welcome-screen">
+            <div class="welcome-icon">
+                <i class="bi bi-music-note-beamed"></i>
+            </div>
+            <h2>Benvenuto!</h2>
+            <p>Strumento di ascolto musica con <strong>doppio switch</strong></p>
+            <p class="description">Scegli la modalità con cui vuoi accedere:</p>
+            <div class="mode-selection">
+                <button class="btn-mode btn-educator" onclick="startEducatorMode()">
+                    <i class="bi bi-person-workspace"></i>
+                    <span>Area Educatore</span>
+                </button>
+                <button class="btn-mode btn-user" onclick="startUserMode()">
+                    <i class="bi bi-headphones"></i>
+                    <span>Area Utente</span>
+                </button>
+            </div>
+
+            <!-- Bottone Installa PWA -->
+            <button class="btn-primary" id="btnInstallPWA" style="margin-top: 2rem;" onclick="installPWA()">
+                <i class="bi bi-download"></i> <span id="btnInstallPWAText">Installa App su Dispositivo</span>
+            </button>
+        </div>
+    </main>
+
+    <!-- Menu laterale -->
+    <nav class="side-menu" id="sideMenu">
+        <div class="menu-header">
+            <h3>Menu</h3>
+            <button class="btn-close-menu" onclick="toggleMenu()">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+        <ul class="menu-list">
+            <li><button onclick="showInstructions()"><i class="bi bi-question-circle"></i> Come funziona</button></li>
+            <li><button onclick="resetApp()"><i class="bi bi-arrow-clockwise"></i> Ricomincia</button></li>
+            <li><button onclick="showInfo()"><i class="bi bi-info-circle"></i> Informazioni</button></li>
+            <li><button onclick="aggiornaApp()" style="color: #ff9800;"><i class="bi bi-arrow-repeat"></i> Aggiorna App</button></li>
+        </ul>
+    </nav>
+
+    <!-- Overlay per menu -->
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <!-- Modal Istruzioni -->
+    <div class="modal" id="instructionsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="bi bi-question-circle"></i> Come funziona</h3>
+                <button class="btn-close-modal" onclick="closeModal('instructionsModal')">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h4>Doppio switch (Makey Makey)</h4>
+                <ul style="line-height: 2; padding-left: 1.5rem;">
+                    <li><strong>Switch 1 (SPAZIO o FRECCIA SINISTRA):</strong> attiva la musica YouTube scelta dall'educatore</li>
+                    <li><strong>Switch 2 (FRECCIA DESTRA):</strong> riproduce gli audio MP3 o le voci registrate; la musica va in pausa e riprende alla fine</li>
+                </ul>
+                <h4 style="margin-top: 1.5rem;">Area Educatore</h4>
+                <ol style="line-height: 2; padding-left: 1.5rem;">
+                    <li><strong>Digita la categoria</strong> (es: "canzoni per bambini"): dopo 1 secondo si apre YouTube con la ricerca</li>
+                    <li><strong>Copia il link</strong> del video scelto e incollalo nel campo "Link YouTube"</li>
+                    <li>Imposta nome del brano ed eventuali <strong>tempi di inizio/fine</strong>, poi salva</li>
+                    <li>Nella sezione <strong>Audio Switch 2</strong> registra una voce o carica un file audio (anche vocali WhatsApp: convertiti in MP3 col silenzio tagliato)</li>
+                    <li>Per video e audio scegli se al click dello switch parte il <strong>successivo</strong> o uno <strong>casuale</strong></li>
+                </ol>
+                <div class="info-box" style="margin-top: 1.5rem;">
+                    <i class="bi bi-lightbulb"></i>
+                    <p><strong>Importante:</strong> tutti i dati (brani e registrazioni) sono salvati <strong>su questo dispositivo</strong>. Non cancellare i dati di navigazione del browser.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" onclick="closeModal('instructionsModal')">Ho capito</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Informazioni -->
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="bi bi-info-circle"></i> Informazioni</h3>
+                <button class="btn-close-modal" onclick="closeModal('infoModal')">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h4>Ascolto la Musica</h4>
+                <p>Strumento di training cognitivo con doppio switch, autonomo: tutti i dati restano su questo dispositivo.</p>
+                <p><strong>Versione:</strong> <span id="infoVersione">1.0.0</span></p>
+                <p id="infoStorage"><strong>Spazio dati:</strong> calcolo in corso...</p>
+                <div class="info-box">
+                    <i class="bi bi-hdd"></i>
+                    <p>I brani YouTube e le registrazioni MP3 sono archiviati nel browser di questo dispositivo (localStorage + IndexedDB).</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" onclick="closeModal('infoModal')">Chiudi</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- YouTube IFrame Player API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <!-- Scripts -->
+    <script src="js/lib/lame.min.js"></script>
+    <script src="js/storage.js?v=1.0"></script>
+    <script src="js/app.js?v=1.0"></script>
+    <script src="js/switch2.js?v=1.0"></script>
+
+    <!-- Service Worker PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js?v=1.0')
+                    .then((registration) => {
+                        console.log('✅ Service Worker registrato:', registration.scope);
+                        setInterval(() => registration.update(), 60000);
+                    })
+                    .catch((error) => console.error('❌ Service Worker non registrato:', error));
+            });
+        }
+    </script>
+</body>
+</html>

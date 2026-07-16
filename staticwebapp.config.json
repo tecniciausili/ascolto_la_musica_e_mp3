@@ -1,0 +1,13 @@
+{
+    "navigationFallback": {
+        "rewrite": "/index.html",
+        "exclude": ["/assets/*", "/css/*", "/js/*", "/*.png", "/*.json", "/service-worker.js"]
+    },
+    "globalHeaders": {
+        "Permissions-Policy": "microphone=(self)"
+    },
+    "mimeTypes": {
+        ".json": "application/json",
+        ".woff2": "font/woff2"
+    }
+}
